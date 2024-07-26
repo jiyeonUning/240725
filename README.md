@@ -7,3 +7,68 @@
 
 조건 2. 갑옷의 내구도가 0이 될 때, 플레이어가 갑옷을 해제(UnEquip) 하도록 한다.
 
+
+ public class Player
+        {
+            private Armor curArmor;
+
+            public void Equip(Armor armor)
+            {
+                Console.WriteLine($"플레이어가 {armor.name} 을/를 착용합니다.");
+                curArmor = armor;
+                // 빈칸
+            }
+
+            public void UnEquip()
+            {
+                Console.WriteLine($"플레이어가 {curArmor.name} 을/를 해제합니다.");
+                // 빈칸 
+
+                curArmor = null;
+            }
+
+            public void Hit()  
+            {
+                // 빈칸
+            }
+        }
+
+        public class Armor
+        {
+            public string name;
+            private int durability;
+
+            public event Action OnBreaked;
+
+            public Armor(string name, int durability)
+            {
+                this.name = name;
+                this.durability = durability;
+            }
+
+            public void DecreaseDurability()
+            {
+                durability--;
+                if (durability <= 0)
+                {
+                    Break();
+                }
+            }
+
+            private void Break() 
+            {
+                // 빈칸
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            Player player = new Player();
+            Armor ammor = new Armor("갑옷", 3);
+
+            player.Equip(ammor);
+
+            player.Hit();
+            player.Hit();
+            player.Hit();
+        }
